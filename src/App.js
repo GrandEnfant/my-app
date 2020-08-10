@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
@@ -17,11 +16,11 @@ function App() {
       } else {
           setTurn(X);
       }
-  }
+  };
 
   const timeout = function () {
       timer = setTimeout(setTurnFunc, 3000);
-  }
+  };
 
   useEffect(() => {
       clearTimeout(timer);
@@ -36,42 +35,42 @@ function App() {
         setTurnFunc();
         if(checkWinner(turn)) {
             setWinner(turn);
-        };
+        }
     }
-  }
+  };
 
   const checkWinner = function () {
       return (checkDiagonal(turn) || checkLines(turn));
-  }
+  };
 
   const checkDiagonal = function () {
-     let diagonal1 = true;
-     let diagonal2 = true;
+     let fromBottomLeftDiagonal = true;
+     let fromTopLeftDiagonal = true;
      for(let i = 0; i < field.length; i++) {
          for(let j = 0; j < field[i].length; j++) {
              if (i === j) {
-                 diagonal1 = diagonal1 && (field[i][j] === turn);
+                 fromBottomLeftDiagonal = fromBottomLeftDiagonal && (field[i][j] === turn);
              } else if (i + j === (field.length - 1)) {
-                 diagonal2 = diagonal2 && (field[i][j] === turn);
+                 fromTopLeftDiagonal = fromTopLeftDiagonal && (field[i][j] === turn);
              }
          }
      }
-      return diagonal1 || diagonal2;
-  }
+      return fromBottomLeftDiagonal || fromTopLeftDiagonal;
+  };
 
   const checkLines = function () {
-    let rows = true;
-    let columns = true
+    let isRowFill = true;
+    let isColFill = true;
 
     for(let col = 0; col < field.length; col++) {
         for(let row = 0; row < field.length; row++) {
-            columns = columns && (field[col][row] === turn);
-            rows = rows && (field[row][col]);
+            isColFill = isColFill && (field[col][row] === turn);
+            isRowFill = isRowFill && (field[row][col]);
         }
-        if(columns || rows) return true;
+        if(isColFill || isRowFill) return true;
     }
     return false
-  }
+  };
 
     return (
     <div className="App">
