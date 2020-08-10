@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import './App.css';
-import connect from "react-redux/lib/connect/connect";
 import mapStateToProps from "react-redux/lib/connect/mapStateToProps";
+import connect from "react-redux/lib/connect/connect";
 
-function App() {
+function TicTac() {
     let timer;
     const X = 'X';
     const O = 'O';
@@ -20,7 +19,10 @@ function App() {
         }
     };
 
-
+    const mapStateToProps = state => {
+      console.log(state);
+      return state;
+    };
 
     const timeout = function () {
         timer = setTimeout(setTurnFunc, 3000);
@@ -76,23 +78,16 @@ function App() {
         return false
     };
 
-    const mapStateToProps = state => {
-        console.log(state);
-        return state;
-    };
-
-
+    const ticTac = <React.Fragment> {field.map((item, i) => <div className = 'row' key={i}>
+        {item.map((item, j) => <div className={'cell'} key={j} onClick={() => {addSign(i, j)}}> {field[i][j]} </div>)} </div>)}
+        <span>Winner: {winner} </span> </React.Fragment>;
 
     return (
-        <div>
-            <React.Fragment> {field.map((item, i) => <div className = 'row' key={i}>
-                {item.map((item, j) => <div className={'cell'} key={j} onClick={() => {addSign(i, j)}}> {field[i][j]} </div>)} </div>)}
-                <span>Winner: {winner} </span> </React.Fragment>
+       <div>
+            {ticTac}
         </div>
     );
 }
 //
-export default connect(null, null)(App);
-// }
-//
-// export default App;
+export default connect(mapStateToProps, null)(TicTac);
+// export default TicTac;
