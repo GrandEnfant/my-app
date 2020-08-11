@@ -1,0 +1,5 @@
+export const types = {
+CHANGE_FIELD: 'CHANGE_FIELD',
+CHANGE_TURN: 'CHANGE_TURN',
+SET_WINNER: 'SET_WINNER',
+};

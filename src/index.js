@@ -7,14 +7,12 @@ import {Provider} from "react-redux";
 import {createStore} from 'redux';
 import {rootReducer} from "./redux/rootReducer";
 
-
 const store = createStore(rootReducer);
 
-
 const app = (
-  <Provider store={store}>
-    <App />
-  </Provider>
+  <React.Fragment >
+    <App store={store} />
+   </React.Fragment>
 );
 
 render(app, document.getElementById('root'));

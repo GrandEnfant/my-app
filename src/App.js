@@ -1,7 +1,20 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
 import connect from "react-redux/lib/connect/connect";
-import mapStateToProps from "react-redux/lib/connect/mapStateToProps";
+import {changeField, changeTurn, setWinner} from './redux/actions'
+
+const mapStateToProps = store => {
+    console.log(store);
+    return {
+        turn: store.turn
+    }
+};
+
+const mapDispatchToProps = {
+    changeField,
+    changeTurn,
+    setWinner,
+};
 
 function App() {
     let timer;
@@ -19,8 +32,6 @@ function App() {
             setTurn(X);
         }
     };
-
-
 
     const timeout = function () {
         timer = setTimeout(setTurnFunc, 3000);
@@ -76,12 +87,6 @@ function App() {
         return false
     };
 
-    const mapStateToProps = state => {
-        console.log(state);
-        return state;
-    };
-
-
 
     return (
         <div>
@@ -91,8 +96,7 @@ function App() {
         </div>
     );
 }
-//
-export default connect(null, null)(App);
-// }
-//
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+
 // export default App;
