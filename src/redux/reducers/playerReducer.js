@@ -17,7 +17,8 @@ export const playerReducer = (state = initialState, action) => {
             return {...state, turn: state.turn.concat(action.payload)}
         }
         case types.SET_WINNER: {
-            return {...state, winner: state.winner.concat(action.payload)}
+
+            return {...state, winner: state.winner}
         }
         default: return state;
     }

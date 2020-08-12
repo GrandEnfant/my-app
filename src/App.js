@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
-import connect from "react-redux/lib/connect/connect";
+import {connect} from "react-redux";
 import {changeField, changeTurn, setWinner} from './redux/actions'
 
 
@@ -46,18 +46,20 @@ function App(store) {
     //     }
     // };
 
-    const addSign = function (i, j) {
+    const addSign = function () {
+        setWinner(store.winner.winner.winner + 1)
         // if(store.field[i][j] === null) {
         //     console.log('tut')
            // store.field[i][j] = turn; // mut
             // setField(field);//
+        // setWinner(store.winner)
             // setTurnFunc();
             // if(checkWinner(turn)) {
             //     setWinner(turn);
             // }
         // }
     };
-    //
+
     // const checkWinner = function () {
     //     return (checkDiagonal(turn) || checkLines(turn));
     // };
@@ -93,12 +95,15 @@ function App(store) {
 
 
     return (
-        <React.Fragment> <div className={"row"}>{store.winner}</div>
-              </React.Fragment>
+        <React.Fragment> <div className={""}> {store.field.field.map((item, i) => <div className = 'row' key={i}>
+            {item.map((item, j) => <div className={'cell'} key={j} onClick={() => {addSign(i, j)}}> {store.field.field[i][j]} </div>)}  </div>)} </div>
+            <span onClick={() => {addSign()}}> {store.winner.winner.winner} </span> </React.Fragment>
     );
 }
-const mapStateToProps = state => {
-        return {winner: state.winner};
+    const mapStateToProps = state => {
+                return {field: state.field,
+                        winner: state.winner};
+
 
     // switch(state) {
     //     case "field":
@@ -112,7 +117,7 @@ const mapStateToProps = state => {
     // return store.winner
     // }
 
-
+    // {item.map((item, j) => <div className={'cell'} key={j} onClick={() => {addSign(i, j)}}> {store.field.field[i][j]} </div>)}
     // console.log(store);
     // return {
     //     // turn: store.turn
@@ -120,7 +125,11 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = () => {
-    return {}
+    return {
+        changeField,
+        changeTurn,
+        setWinner
+    }
 };
     export default connect(mapStateToProps, mapDispatchToProps)(App);
 
