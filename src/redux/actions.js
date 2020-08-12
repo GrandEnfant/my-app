@@ -4,6 +4,7 @@ export function changeField(field) {
     return {
         type: types.CHANGE_FIELD,
         payload: field,
+
     }
 }
 

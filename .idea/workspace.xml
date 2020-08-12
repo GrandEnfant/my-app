@@ -2,13 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a7ad4214-ca42-45fe-b895-99c9dfcf2c73" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/redux/actions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/types.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/fieldReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/fieldReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/playerReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/playerReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/fieldReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/fieldReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/playerReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/playerReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/rootReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/rootReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/store.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -64,6 +65,11 @@
     <property name="project.structure.side.proportion" value="0.6183908" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/redux/reducers" />
+    </key>
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -87,7 +93,7 @@
       <option name="presentableId" value="Default" />
       <updated>1597054627684</updated>
       <workItem from="1597054630777" duration="437000" />
-      <workItem from="1597058813311" duration="19325000" />
+      <workItem from="1597058813311" duration="40760000" />
     </task>
     <servers />
   </component>

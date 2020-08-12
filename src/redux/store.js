@@ -1,6 +1,6 @@
 import React from 'react';
 import {createStore} from 'redux';
-import {rootReducer} from "./rootReducer";
+import {rootReducer} from "./reducers/rootReducer";
 
 
 

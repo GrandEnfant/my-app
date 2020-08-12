@@ -1,4 +1,4 @@
-import {types} from "./types";
+import {types} from "../types";
 
 const initialState = {
     type: types.CHANGE_FIELD,
@@ -9,5 +9,6 @@ const initialState = {
 
 export const fieldReducer = (state = initialState, action) => {
 
-    return {...state, field: state.field.concat(action.payload)};
+        return {...state, field: state.field.concat(action.payload)};
+
 };

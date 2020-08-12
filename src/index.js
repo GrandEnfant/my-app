@@ -4,15 +4,13 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {Provider} from "react-redux";
-import {createStore} from 'redux';
-import {rootReducer} from "./redux/rootReducer";
+import {store} from "./redux/store";
 
-const store = createStore(rootReducer);
 
 const app = (
-  <React.Fragment >
-    <App store={store} />
-   </React.Fragment>
+  <Provider store={store}>
+    <App />
+  </Provider>
 );
 
 render(app, document.getElementById('root'));

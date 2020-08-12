@@ -1,13 +1,13 @@
-import {types} from "./types";
+import {types} from "../types";
 
 const initialState = {
     turn:{
         type: types.CHANGE_TURN,
-         turn: 'X',
+        turn: 'X',
     },
     winner: {
         type: types.SET_WINNER,
-        winner: 'nobody',
+        winner: 0,
     }
 };
 
