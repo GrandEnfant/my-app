@@ -2,11 +2,12 @@ import React, {useEffect, useState} from 'react';
 import './App.css';
 import {connect} from "react-redux";
 import {changeField, changeTurn, setWinner} from './redux/actions'
+import {bindActionCreators} from "redux";
 
 
 
 
-function App(store) {
+function App(props) {
     console.log('tut');
     // console.log(store.field[0][1]);
     // let timer;
@@ -45,19 +46,24 @@ function App(store) {
     //         }
     //     }
     // };
+    console.log(props.field);
 
-    const addSign = function () {
-        setWinner(store.winner.winner.winner + 1)
-        // if(store.field[i][j] === null) {
-        //     console.log('tut')
-           // store.field[i][j] = turn; // mut
+    // console.log(props);
+    const addSign = function (i, j) {
+        // let newWinner = props.player.winner.winner + 1;
+        props.setWinner();
+        if(props.field.field[i][j] === null) {
+            console.log('sdes');
+
+            props.changeField(i, j);
+           // mut
             // setField(field);//
         // setWinner(store.winner)
             // setTurnFunc();
             // if(checkWinner(turn)) {
             //     setWinner(turn);
             // }
-        // }
+        }
     };
 
     // const checkWinner = function () {
@@ -95,14 +101,18 @@ function App(store) {
 
 
     return (
-        <React.Fragment> <div className={""}> {store.field.field.map((item, i) => <div className = 'row' key={i}>
-            {item.map((item, j) => <div className={'cell'} key={j} onClick={() => {addSign(i, j)}}> {store.field.field[i][j]} </div>)}  </div>)} </div>
-            <span onClick={() => {addSign()}}> {store.winner.winner.winner} </span> </React.Fragment>
+        <React.Fragment>
+
+                {props.field.field.map((item, i) => <div className = 'row' key={i}>
+                {item.map((item, j) => <div className={'cell'} key={j} onClick={() => {addSign(i, j)}}> {props.field.field[i][j]} </div>)}  </div>)}
+
+            <span onClick={() => {addSign()}}> {props.winner} </span> </React.Fragment>
     );
-}
+};
     const mapStateToProps = state => {
+    console.log(state);
                 return {field: state.field,
-                        winner: state.winner};
+                    winner: state.player.winner};
 
 
     // switch(state) {
@@ -124,11 +134,10 @@ function App(store) {
     // }
 };
 
-const mapDispatchToProps = () => {
+const mapDispatchToProps = (dispatch) => {
     return {
-        changeField,
-        changeTurn,
-        setWinner
+        setWinner: bindActionCreators(setWinner, dispatch),
+        changeField: bindActionCreators(changeField, dispatch),
     }
 };
     export default connect(mapStateToProps, mapDispatchToProps)(App);

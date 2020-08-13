@@ -1,24 +1,19 @@
 import {types} from "../types";
 
 const initialState = {
-    turn:{
-        type: types.CHANGE_TURN,
-        turn: 'X',
-    },
-    winner: {
-        type: types.SET_WINNER,
-        winner: 0,
-    }
+    turn: 'X',
+    winner: 0,
 };
 
 export const playerReducer = (state = initialState, action) => {
     switch (action.type) {
         case types.CHANGE_TURN: {
-            return {...state, turn: state.turn.concat(action.payload)}
+            let newTurn;
+            return {...state, turn: newTurn}
         }
         case types.SET_WINNER: {
-
-            return {...state, winner: state.winner}
+            let newWinner = state.winner + 1;
+            return {...state, winner: newWinner};
         }
         default: return state;
     }

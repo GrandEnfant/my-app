@@ -5,7 +5,5 @@ import {playerReducer} from "./playerReducer";
 
 export const rootReducer = combineReducers({
     field: fieldReducer,
-    turn: playerReducer,
-    winner: playerReducer
-
+    player: playerReducer,
 });
