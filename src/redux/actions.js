@@ -1,10 +1,13 @@
 import {types} from "./types";
 
-export function changeField(i, j) {
+export function changeField(i, j, turn) {
     return {
         type: types.CHANGE_FIELD,
-
-        payload: {i: 0, j: 0}
+        payload: {
+            i: i,
+            j: j,
+            turn: turn
+        }
 
     }
 }
@@ -12,13 +15,13 @@ export function changeField(i, j) {
 export function changeTurn(turn) {
     return {
         type: types.CHANGE_TURN,
-        turn: turn,
+        payload: {turn: turn},
     }
 }
 
 export function setWinner(winner) {
     return {
         type: types.SET_WINNER,
-        winner: winner,
+        payload: {winner: winner},
     }
 }

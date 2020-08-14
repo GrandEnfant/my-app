@@ -8,12 +8,11 @@ const initialState = {
 export const playerReducer = (state = initialState, action) => {
     switch (action.type) {
         case types.CHANGE_TURN: {
-            let newTurn;
-            return {...state, turn: newTurn}
+            return {...state, turn: action.payload.turn}
         }
         case types.SET_WINNER: {
-            let newWinner = state.winner + 1;
-            return {...state, winner: newWinner};
+
+            return {...state, winner: action.payload.winner};
         }
         default: return state;
     }
