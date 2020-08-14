@@ -8,7 +8,6 @@ export function changeField(i, j, turn) {
             j: j,
             turn: turn
         }
-
     }
 }
 

@@ -77,24 +77,6 @@ console.log(props.winner);
                     turn: state.player.turn
                 };
 
-
-    // switch(state) {
-    //     case "field":
-    //         return {field: state.field};
-    //     case "turn":
-    //         return {turn: state.turn};
-    //     case "winner":
-    //         return {winner: state.winner};
-    //     default:
-    //         return state.field
-    // return store.winner
-    // }
-
-    // {item.map((item, j) => <div className={'cell'} key={j} onClick={() => {addSign(i, j)}}> {store.field.field[i][j]} </div>)}
-    // console.log(store);
-    // return {
-    //     // turn: store.turn
-    // }
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -106,4 +88,3 @@ const mapDispatchToProps = (dispatch) => {
 };
     export default connect(mapStateToProps, mapDispatchToProps)(App);
 
-// export default App;

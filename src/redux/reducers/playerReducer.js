@@ -14,9 +14,7 @@ export const playerReducer = (state = initialState, action) => {
 
             return {...state, winner: action.payload.winner};
         }
-        default: return state;
+        default:
+            return state;
     }
-    // console.log(state.turn);
-    // return state;
-
 };

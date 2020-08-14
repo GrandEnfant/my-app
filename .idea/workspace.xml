@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/fieldReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/fieldReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/reducers/playerReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/playerReducer.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -90,7 +89,7 @@
       <option name="presentableId" value="Default" />
       <updated>1597054627684</updated>
       <workItem from="1597054630777" duration="437000" />
-      <workItem from="1597058813311" duration="87043000" />
+      <workItem from="1597058813311" duration="87392000" />
     </task>
     <servers />
   </component>
