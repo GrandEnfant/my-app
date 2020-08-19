@@ -1,4 +1,4 @@
-import {types} from "../types";
+import {Types} from "../types";
 
 
 const initialState = {
@@ -9,7 +9,7 @@ const initialState = {
 
 export const fieldReducer = (state = initialState, action) => {
     switch (action.type) {
-        case types.CHANGE_FIELD: {
+        case Types.CHANGE_FIELD: {
             state.field[action.payload.i][action.payload.j] = action.payload.turn;
             return {...state};
         }

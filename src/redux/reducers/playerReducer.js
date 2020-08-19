@@ -1,4 +1,4 @@
-import {types} from "../types";
+import {Types} from "../types";
 
 const initialState = {
     turn: 'X',
@@ -7,10 +7,10 @@ const initialState = {
 
 export const playerReducer = (state = initialState, action) => {
     switch (action.type) {
-        case types.CHANGE_TURN: {
+        case Types.CHANGE_TURN: {
             return {...state, turn: action.payload.turn}
         }
-        case types.SET_WINNER: {
+        case Types.SET_WINNER: {
 
             return {...state, winner: action.payload.winner};
         }

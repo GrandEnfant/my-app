@@ -1,16 +1,16 @@
-import React, {useEffect} from 'react';
+import * as React from 'react';
 import './App.css';
 import {connect} from "react-redux";
 import {changeField, changeTurn, setWinner} from './redux/actions'
 import {bindActionCreators} from "redux";
 
-let timer;
-function App(props) {
 
-    const X = 'X';
-    const O = 'O';
+function App(props): any {
+
+    const X: string = 'X';
+    const O: string = 'O';
 console.log(props.winner);
-    const setTurnFunc = function () {
+    function setTurnFunc(): void {
         if(props.turn === X) {
             props.changeTurn(O);
         } else {
@@ -18,7 +18,7 @@ console.log(props.winner);
         }
     };
 
-    const addSign = function (i, j) {
+    function addSign(i: number, j: number) {
 
         if(props.field.field[i][j] === null) {
             props.changeField(i, j, props.turn);
@@ -29,11 +29,11 @@ console.log(props.winner);
         }
     };
 
-    const checkWinner = function () {
+    function checkWinner(): boolean {
         return (checkDiagonal(props.turn) || checkLines(props.turn));
     };
 
-    const checkDiagonal = function () {
+    function checkDiagonal(): boolean {
         let fromBottomLeftDiagonal = true;
         let fromTopLeftDiagonal = true;
         for(let i = 0; i < props.field.field.length; i++) {
@@ -70,12 +70,12 @@ console.log(props.winner);
             <span onClick={() => {addSign()}}> {props.winner} </span> </React.Fragment>
     );
 };
-    const mapStateToProps = state => {
-                return {
-                    field: state.field,
-                    winner: state.player.winner,
-                    turn: state.player.turn
-                };
+const mapStateToProps = state => {
+    return {
+        field: state.field,
+        winner: state.player.winner,
+        turn: state.player.turn
+    };
 
 };
 
@@ -86,5 +86,5 @@ const mapDispatchToProps = (dispatch) => {
         changeTurn: bindActionCreators(changeTurn, dispatch),
     }
 };
-    export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 
