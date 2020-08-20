@@ -13,7 +13,7 @@ export interface IPayload {
     i?: number,
     j?: number,
 }
-export function changeField(i: number, j: number, turn: string) {
+export function changeField(i: number, j: number, turn: string): IAction {
     return {
         type: Types.CHANGE_FIELD,
         payload: {
@@ -24,14 +24,14 @@ export function changeField(i: number, j: number, turn: string) {
     }
 }
 
-export function changeTurn(turn: string) {
+export function changeTurn(turn: string): IAction {
     return {
         type: Types.CHANGE_TURN,
         payload: {turn: turn},
     }
 }
 
-export function setWinner(winner: string) {
+export function setWinner(winner: string): IAction {
     return {
         type: Types.SET_WINNER,
         payload: {winner: winner},

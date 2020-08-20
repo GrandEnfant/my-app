@@ -7,3 +7,6 @@ export const rootReducer = combineReducers({
     field: fieldReducer,
     player: playerReducer,
 });
+
+type RootReducerType = typeof rootReducer;
+export type stateType = ReturnType<RootReducerType>

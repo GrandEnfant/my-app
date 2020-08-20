@@ -7,7 +7,7 @@ const initialState: IPayload = {
     winner: 'nobody',
 };
 
-export const playerReducer = (state = initialState, action: IAction) => {
+export const playerReducer = (state = initialState, action: IAction): object => {
     switch (action.type) {
         case Types.CHANGE_TURN: {
             return {...state, turn: action.payload.turn}

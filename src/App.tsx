@@ -4,7 +4,6 @@ import {connect} from "react-redux";
 import {changeField, changeTurn, setWinner} from './redux/actions'
 import {bindActionCreators} from "redux";
 
-
 type Props = {
     changeField: (i: number, j: number, turn: string ) => void,
     changeTurn: (turn: string) => void,
@@ -55,7 +54,7 @@ const App: React.FC<Props> = (props) => {
         return fromBottomLeftDiagonal || fromTopLeftDiagonal;
     };
 
-    const checkLines = function () {
+    const checkLines = function (): boolean {
         let isRowFill = true;
         let isColFill = true;
 
@@ -78,6 +77,8 @@ const App: React.FC<Props> = (props) => {
     );
 };
 
+
+
 const mapStateToProps = (state: any)  => {
     return {
         field: state.field.field,
@@ -93,6 +94,8 @@ const mapDispatchToProps = (dispatch: any) => {
         changeTurn: bindActionCreators(changeTurn, dispatch),
     }
 };
+
+
 const ConnectedApp: React.FC<{}> = connect(mapStateToProps, mapDispatchToProps)(App);
 export default ConnectedApp;
 
