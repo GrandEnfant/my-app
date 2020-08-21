@@ -1,19 +1,13 @@
-import {Types} from "./types";
+import {ActionType, Types} from "./types";
 
 
-export interface IAction {
-    type: string,
-    payload: IPayload
-}
 
-export interface IPayload {
-    turn?: string,
-    winner?: string
-    field?: string | null [][],
-    i?: number,
-    j?: number,
-}
-export function changeField(i: number, j: number, turn: string): IAction {
+
+// export type PayloadWinnerType = {
+//     winner: string
+// }
+
+export function changeField(i: number, j: number, turn: string): ActionType {
     return {
         type: Types.CHANGE_FIELD,
         payload: {
@@ -24,16 +18,16 @@ export function changeField(i: number, j: number, turn: string): IAction {
     }
 }
 
-export function changeTurn(turn: string): IAction {
+export function changeTurn(turn: string): ActionType {
     return {
         type: Types.CHANGE_TURN,
         payload: {turn: turn},
     }
 }
 
-export function setWinner(winner: string): IAction {
-    return {
-        type: Types.SET_WINNER,
-        payload: {winner: winner},
-    }
-}
+// export function setWinner(winner: string): ActionType {
+//     return {
+//         type: Types.SET_WINNER,
+//         payload: {winner: winner},
+//     }
+// }

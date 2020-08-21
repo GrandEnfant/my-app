@@ -1,5 +1,20 @@
 export enum Types {
     CHANGE_FIELD = 'CHANGE_FIELD',
     CHANGE_TURN = 'CHANGE_TURN',
-    SET_WINNER = 'SET_WINNER',
 };
+
+
+export type ActionType = {
+    type: string,
+    payload: PayloadFieldType | PayloadTurnType,
+}
+
+export type PayloadFieldType = {
+    turn?: string,
+    i?: number,
+    j?: number,
+}
+
+export type PayloadTurnType = {
+    turn: string,
+}

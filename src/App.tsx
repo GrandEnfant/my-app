@@ -1,22 +1,56 @@
 import * as React from 'react';
 import './App.css';
 import {connect} from "react-redux";
-import {changeField, changeTurn, setWinner} from './redux/actions'
-import {bindActionCreators} from "redux";
+import {changeField, changeTurn} from './redux/actions'
+import {bindActionCreators, Dispatch} from "redux";
+import {useEffect} from "react";
 
 type Props = {
     changeField: (i: number, j: number, turn: string ) => void,
     changeTurn: (turn: string) => void,
-    setWinner: (turn: string) => void,
     field: (string | null) [][],
-    winner: string,
     turn: string
-}
+};
+let timer: number;
 
+function checkWinner(field: (string | null)[][], turn: string): boolean {
+    return (checkDiagonal(field, turn) || checkLines(field, turn));
+};
+
+function checkDiagonal(field: (string | null) [][], turn: string): boolean {
+    let fromBottomLeftDiagonal = true;
+    let fromTopLeftDiagonal = true;
+    for(let i = 0; i < field.length; i++) {
+        for(let j = 0; j < field[i].length; j++) {
+            if (i === j) {
+                fromBottomLeftDiagonal = fromBottomLeftDiagonal && (field[i][j] === turn);
+            } else if (i + j === (field.length - 1)) {
+                fromTopLeftDiagonal = fromTopLeftDiagonal && (field[i][j] === turn);
+            }
+        }
+    }
+    return fromBottomLeftDiagonal || fromTopLeftDiagonal;
+};
+
+const checkLines = function (field: (string | null)[][], turn: string): boolean {
+    let isRowFill = true;
+    let isColFill = true;
+
+    for(let col = 0; col < field.length; col++) {
+        for(let row = 0; row < field.length; row++) {
+            isColFill = isColFill && (field[col][row] === turn);
+            isRowFill = isRowFill && !!(field[row][col]);
+        }
+        if(isColFill || isRowFill) return true;
+    }
+    return false
+};
 
 const App: React.FC<Props> = (props) => {
+    let winner;
     const X: string = 'X';
     const O: string = 'O';
+
     function setTurnFunc(): void {
         if(props.turn === X) {
             props.changeTurn(O);
@@ -25,71 +59,54 @@ const App: React.FC<Props> = (props) => {
         }
     };
 
+    // const timeout = function () {
+    //     timer = window.setTimeout(setTurnFunc, 3000);
+    // };
+
+    // useEffect(() => {
+    //     clearTimeout(timer);
+    //     timeout();
+    // }, [props.turn]);
+
     function addSign(i: number, j: number) {
         if(props.field[i][j] === null) {
             props.changeField(i, j, props.turn);
             setTurnFunc();
-            if(checkWinner()) {
-                props.setWinner(props.turn);
+            if(props.checkWinner(props.field, props.turn)) {
+             console.log(props.turn);
             }
         }
     };
 
-    function checkWinner(): boolean {
-        return (checkDiagonal() || checkLines());
-    };
 
-    function checkDiagonal(): boolean {
-        let fromBottomLeftDiagonal = true;
-        let fromTopLeftDiagonal = true;
-        for(let i = 0; i < props.field.length; i++) {
-            for(let j = 0; j < props.field[i].length; j++) {
-                if (i === j) {
-                    fromBottomLeftDiagonal = fromBottomLeftDiagonal && (props.field[i][j] === props.turn);
-                } else if (i + j === (props.field.length - 1)) {
-                    fromTopLeftDiagonal = fromTopLeftDiagonal && (props.field[i][j] === props.turn);
-                }
-            }
-        }
-        return fromBottomLeftDiagonal || fromTopLeftDiagonal;
-    };
-
-    const checkLines = function (): boolean {
-        let isRowFill = true;
-        let isColFill = true;
-
-        for(let col = 0; col < props.field.length; col++) {
-            for(let row = 0; row < props.field.length; row++) {
-                isColFill = isColFill && (props.field[col][row] === props.turn);
-                isRowFill = isRowFill && !!(props.field[row][col]);
-            }
-            if(isColFill || isRowFill) return true;
-        }
-        return false
-    };
 
     return (
         <React.Fragment>
                 {props.field.map((item: Array<string | null>, i: number) => <div className = 'row' key={i}>
                 {item.map((item, j: number) => <div className={'cell'} key={j} onClick={() => {addSign(i, j)}}> {props.field[i][j]} </div>)}  </div>)}
-
-            <span> {props.winner} </span> </React.Fragment>
+            <span> {winner} </span> </React.Fragment>
     );
 };
 
 
+type RootState = {
+        field: object,
+        player: object
+};
 
 const mapStateToProps = (state: any)  => {
+    console.log(state);
     return {
         field: state.field.field,
         winner: state.player.winner,
-        turn: state.player.turn
+        turn: state.player.turn,
+
+       checkWinner,
     };
 };
 
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
-        setWinner: bindActionCreators(setWinner, dispatch),
         changeField: bindActionCreators(changeField, dispatch),
         changeTurn: bindActionCreators(changeTurn, dispatch),
     }

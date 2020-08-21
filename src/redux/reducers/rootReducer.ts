@@ -9,4 +9,4 @@ export const rootReducer = combineReducers({
 });
 
 type RootReducerType = typeof rootReducer;
-export type stateType = ReturnType<RootReducerType>
+export type StateType = ReturnType<RootReducerType>
