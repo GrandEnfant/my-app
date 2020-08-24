@@ -1,12 +1,6 @@
 import {ActionType, Types} from "./types";
 
 
-
-
-// export type PayloadWinnerType = {
-//     winner: string
-// }
-
 export function changeField(i: number, j: number, turn: string): ActionType {
     return {
         type: Types.CHANGE_FIELD,

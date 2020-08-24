@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import {changeField, changeTurn} from './redux/actions'
 import {bindActionCreators, Dispatch} from "redux";
 import {useEffect} from "react";
+import {RootState} from "./redux/types";
 
 type Props = {
     changeField: (i: number, j: number, turn: string ) => void,
@@ -72,12 +73,11 @@ const App: React.FC<Props> = (props) => {
         if(props.field[i][j] === null) {
             props.changeField(i, j, props.turn);
             setTurnFunc();
-            if(props.checkWinner(props.field, props.turn)) {
+            if(checkWinner(props.field, props.turn)) {
              console.log(props.turn);
             }
         }
     };
-
 
 
     return (
@@ -89,19 +89,14 @@ const App: React.FC<Props> = (props) => {
 };
 
 
-type RootState = {
-        field: object,
-        player: object
-};
 
-const mapStateToProps = (state: any)  => {
-    console.log(state);
+
+const mapStateToProps = (state: RootState)  => {
+    console.log(typeof state.field.field);
     return {
         field: state.field.field,
         winner: state.player.winner,
         turn: state.player.turn,
-
-       checkWinner,
     };
 };
 

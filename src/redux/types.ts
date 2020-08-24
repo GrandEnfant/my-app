@@ -18,3 +18,8 @@ export type PayloadFieldType = {
 export type PayloadTurnType = {
     turn: string,
 }
+
+export type RootState = {
+    field: (string | null)[][],
+    player: string
+};
