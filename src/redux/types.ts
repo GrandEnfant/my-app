@@ -7,26 +7,29 @@ export enum Types {
 export type ActionType = {
     type: string;
     payload: PayloadFieldType | PayloadTurnType;
-}
+};
 
 export type PayloadFieldType = {
     turn?: string;
     i?: number;
     j?: number;
-}
+};
 
 export type PayloadTurnType = {
     turn: string;
-}
+    // winner: string;
+};
 
 export type fieldType = {
     field: (string | null)[][];
-}
+};
 
-export type turnState = {
+export type turnType = {
     turn: string;
-}
+    // winner: string
+};
+
 export type RootState = {
    field: fieldType;
-   player: turnState;
+   player: turnType;
 };

@@ -12,12 +12,12 @@ type Props = {
     changeTurn: (turn: string) => void;
     field: (string | null) [][];
     turn: string;
+    // winner: string
 };
 let timer: number;
 
-
 const App: React.FC<Props> = (props) => {
-    let winner;
+    // let winner;
     const X: string = 'X';
     const O: string = 'O';
 
@@ -42,8 +42,8 @@ const App: React.FC<Props> = (props) => {
         if(props.field[i][j] === null) {
             props.changeField(i, j, props.turn);
             setTurnFunc();
-
         }
+        // console.log(props.winner);
     };
 
 
@@ -51,7 +51,7 @@ const App: React.FC<Props> = (props) => {
         <React.Fragment>
                 {props.field.map((item: Array<string | null>, i: number) => <div className = 'row' key={i}>
                 {item.map((item, j: number) => <div className={'cell'} key={j} onClick={() => {addSign(i, j)}}> {props.field[i][j]} </div>)}  </div>)}
-            <span> {winner} </span> </React.Fragment>
+            <span> {} </span> </React.Fragment>
     );
 };
 
@@ -61,7 +61,7 @@ const mapStateToProps = (state: RootState)  => {
     return {
         field: state.field.field,
         turn: state.player.turn,
-        checkWinner: checkWinner(state.field.field, state.player.turn),
+        winner: checkWinner(state),
     };
 };
 

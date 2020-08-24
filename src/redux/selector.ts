@@ -1,7 +1,11 @@
+import {RootState} from "./types";
 
 
-export function checkWinner(field: (string | null)[][], turn: string): boolean {
-    return (checkDiagonal(field, turn) || checkLines(field, turn));
+export function checkWinner(state: RootState): string | undefined {
+    let isWinner = (checkDiagonal(state.field.field, state.player.turn) || checkLines(state.field.field, state.player.turn));
+    if(isWinner) {
+        return state.player.turn;
+    }
 };
 
 function checkDiagonal(field: (string | null) [][], turn: string): boolean {
