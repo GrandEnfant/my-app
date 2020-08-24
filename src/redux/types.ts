@@ -5,21 +5,28 @@ export enum Types {
 
 
 export type ActionType = {
-    type: string,
-    payload: PayloadFieldType | PayloadTurnType,
+    type: string;
+    payload: PayloadFieldType | PayloadTurnType;
 }
 
 export type PayloadFieldType = {
-    turn?: string,
-    i?: number,
-    j?: number,
+    turn?: string;
+    i?: number;
+    j?: number;
 }
 
 export type PayloadTurnType = {
-    turn: string,
+    turn: string;
 }
 
+export type fieldType = {
+    field: (string | null)[][];
+}
+
+export type turnState = {
+    turn: string;
+}
 export type RootState = {
-    field: (string | null)[][],
-    player: string
+   field: fieldType;
+   player: turnState;
 };

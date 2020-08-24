@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a7ad4214-ca42-45fe-b895-99c9dfcf2c73" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/redux/selector.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/playerReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/playerReducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/selector.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/selector.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/types.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
