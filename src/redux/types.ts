@@ -17,6 +17,7 @@ export type PayloadFieldType = {
 
 export type PayloadTurnType = {
     turn: string;
+    // winner: string;
 };
 
 export type fieldType = {
@@ -25,6 +26,7 @@ export type fieldType = {
 
 export type turnType = {
     turn: string;
+    // winner: string
 };
 
 export type RootState = {
