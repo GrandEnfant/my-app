@@ -12,12 +12,16 @@ type Props = {
     changeTurn: (turn: string) => void;
     field: (string | null) [][];
     turn: string;
-    // winner: string
+    winner: string
 };
 let timer: number;
+export function disabledField() {
+    let fieldDiv = document.querySelectorAll('div');
+    fieldDiv.forEach((item) => {item.classList.add('disabled') });
+}
+
 
 const App: React.FC<Props> = (props) => {
-    // let winner;
     const X: string = 'X';
     const O: string = 'O';
 
@@ -43,7 +47,6 @@ const App: React.FC<Props> = (props) => {
             props.changeField(i, j, props.turn);
             setTurnFunc();
         }
-        // console.log(props.winner);
     };
 
 
@@ -51,7 +54,7 @@ const App: React.FC<Props> = (props) => {
         <React.Fragment>
                 {props.field.map((item: Array<string | null>, i: number) => <div className = 'row' key={i}>
                 {item.map((item, j: number) => <div className={'cell'} key={j} onClick={() => {addSign(i, j)}}> {props.field[i][j]} </div>)}  </div>)}
-            <span> {} </span> </React.Fragment>
+            <span> {props.winner} </span> </React.Fragment>
     );
 };
 

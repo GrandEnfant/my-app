@@ -8,7 +8,6 @@ export function changeField(i: number, j: number, turn: string): ActionType {
             i: i,
             j: j,
             turn: turn,
-            // winner: ''
         }
     }
 }
@@ -19,10 +18,3 @@ export function changeTurn(turn: string): ActionType {
         payload: {turn: turn,},
     }
 }
-
-// export function setWinner(winner: string): ActionType {
-//     return {
-//         type: Types.SET_WINNER,
-//         payload: {winner: winner},
-//     }
-// }
