@@ -1,15 +1,10 @@
 import {RootState} from "./types";
-import {disabledField} from "../App";
 
 
-export function checkWinner(state: RootState): string {
+export function checkWinner(state: RootState): string | undefined {
     let isWinner = (checkDiagonal(state.field.field, state.player.turn) || checkLines(state.field.field, state.player.turn));
     if(isWinner) {
-        disabledField();
         return state.player.turn;
-    }
-    else {
-        return 'nobody'
     }
 };
 
