@@ -1,15 +1,19 @@
 import {RootState} from "./types";
-import {disabledField} from "../App";
 
-
+export function disabledField() {
+    let fieldDiv = document.querySelectorAll('div');
+    fieldDiv.forEach((item) => {item.classList.add('disabled') });
+}
+let winner = '';
 export function checkWinner(state: RootState): string {
     let isWinner = (checkDiagonal(state.field.field, state.player.turn) || checkLines(state.field.field, state.player.turn));
     if(isWinner) {
+        winner = state.player.turn;
         disabledField();
-        return state.player.turn;
+        return winner;
     }
     else {
-        return 'nobody'
+        return winner;
     }
 };
 

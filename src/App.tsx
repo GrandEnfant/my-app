@@ -12,13 +12,9 @@ type Props = {
     changeTurn: (turn: string) => void;
     field: (string | null) [][];
     turn: string;
-    winner: string
+    winner: string;
 };
 let timer: number;
-export function disabledField() {
-    let fieldDiv = document.querySelectorAll('div');
-    fieldDiv.forEach((item) => {item.classList.add('disabled') });
-}
 
 
 const App: React.FC<Props> = (props) => {
@@ -31,7 +27,7 @@ const App: React.FC<Props> = (props) => {
         } else {
             props.changeTurn(X);
         }
-    };
+    }
 
     const timeout = function () {
         timer = window.setTimeout(setTurnFunc, 3000);
@@ -49,7 +45,6 @@ const App: React.FC<Props> = (props) => {
         }
     };
 
-
     return (
         <React.Fragment>
                 {props.field.map((item: Array<string | null>, i: number) => <div className = 'row' key={i}>
@@ -60,7 +55,6 @@ const App: React.FC<Props> = (props) => {
 
 
 const mapStateToProps = (state: RootState)  => {
-    console.log(state);
     return {
         field: state.field.field,
         turn: state.player.turn,
