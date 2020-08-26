@@ -7,6 +7,7 @@ import {useEffect, useState} from "react";
 import {RootState} from "./redux/types";
 import {checkWinner} from "./redux/selector";
 
+
 type Props = {
     changeField: (i: number, j: number, turn: string ) => void;
     changeTurn: (turn: string) => void;
@@ -30,7 +31,6 @@ const App: React.FC<Props> = (props) => {
 
     const [disabled, setDisabled] = useState(false);
 
-
     const timeout = function () {
         timer = window.setTimeout(setTurnFunc, 3000);
     };
@@ -38,6 +38,9 @@ const App: React.FC<Props> = (props) => {
     useEffect(() => {
         clearTimeout(timer);
         timeout();
+        if(props.winner) {
+            setDisabled(true)
+        }
     }, [props.turn]);
 
     function addSign(i: number, j: number) {
@@ -47,11 +50,29 @@ const App: React.FC<Props> = (props) => {
         }
     };
 
+
+
+    function getCell(i: number, j: number) {
+
+        if (disabled) {
+          return  <div className = {'cell'}  > {props.field[i][j]} </div>
+        } else {
+           return <div className = {'cell'} onClick={() => {addSign(i, j)}}> {props.field[i][j]} </div>
+        }
+
+    }
+
     return (
         <React.Fragment>
-                {props.field.map((item: Array<string | null>, i: number) => <div className = 'row' key={i}>
-                {item.map((item, j: number) => <div  className={'cell'} key={j} >
-                    {disabled? <div onClick={() => {addSign(i, j)}} > {props.field[i][j]} </div>: <div className={'cell'} key={j}> </div>}  </div>)}  </div>)}
+                {props.field.map((item: Array<string | null>, i: number) =>
+                    <div className = 'row' key={i}> {item.map((item, j: number) =>
+                        { if (disabled) {
+                            return  <div className = {'cell'}  > {props.field[i][j]} </div>
+                        } else {
+                            return <div className = {'cell'} onClick={() => {addSign(i, j)}}> {props.field[i][j]} </div>
+                        }}
+                    )}
+                    </div>)}
             <span> {props.winner} </span> </React.Fragment>
     );
 };
