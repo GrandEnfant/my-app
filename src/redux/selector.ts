@@ -1,8 +1,8 @@
 import {RootState} from "./types";
 
-export function disabledField() {
-    let fieldDiv = document.querySelectorAll('div');
-    fieldDiv.forEach((item) => {item.classList.add('disabled') });
+function disabledField() {
+    // let fieldDiv = document.querySelectorAll('div');
+    // fieldDiv.forEach((item) => {item.classList.add('disabled') });
 }
 let winner = '';
 export function checkWinner(state: RootState): string {
