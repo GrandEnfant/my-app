@@ -10,9 +10,9 @@ export type ActionType = {
 };
 
 export type PayloadFieldType = {
-    turn?: string;
-    i?: number;
-    j?: number;
+    turn: string;
+    i: number;
+    j: number;
 };
 
 export type PayloadTurnType = {

@@ -1,15 +1,15 @@
 import {RootState} from "./types";
-import {disabledField} from "../App";
 
 
+let winner = '';
 export function checkWinner(state: RootState): string {
     let isWinner = (checkDiagonal(state.field.field, state.player.turn) || checkLines(state.field.field, state.player.turn));
     if(isWinner) {
-        disabledField();
-        return state.player.turn;
+        winner = state.player.turn;
+        return winner;
     }
     else {
-        return 'nobody'
+        return winner;
     }
 };
 
