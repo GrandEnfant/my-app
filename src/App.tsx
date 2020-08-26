@@ -7,7 +7,6 @@ import {useEffect, useState} from "react";
 import {RootState} from "./redux/types";
 import {checkWinner} from "./redux/selector";
 
-
 type Props = {
     changeField: (i: number, j: number, turn: string ) => void;
     changeTurn: (turn: string) => void;
@@ -19,13 +18,13 @@ let timer: number;
 const X: string = 'X';
 const O: string = 'O';
 
-const App: React.FC<Props> = (props) => {
+const App: React.FC<Props> = ({changeField, changeTurn, field, turn, winner}) => {
 
     function setTurnFunc(): void {
-        if(props.turn === X) {
-            props.changeTurn(O);
+        if(turn === X) {
+            changeTurn(O);
         } else {
-            props.changeTurn(X);
+            changeTurn(X);
         }
     }
 
@@ -38,42 +37,29 @@ const App: React.FC<Props> = (props) => {
     useEffect(() => {
         clearTimeout(timer);
         timeout();
-        if(props.winner) {
+    }, [turn]);
+
+    useEffect(() => {
+        if(winner) {
             setDisabled(true)
         }
-    }, [props.turn]);
+    }, [winner]);
 
     function addSign(i: number, j: number) {
-        if(props.field[i][j] === null) {
-            props.changeField(i, j, props.turn);
+        if(field[i][j] === null) {
+            changeField(i, j, turn);
             setTurnFunc();
         }
     };
 
-
-
-    function getCell(i: number, j: number) {
-
-        if (disabled) {
-          return  <div className = {'cell'}  > {props.field[i][j]} </div>
-        } else {
-           return <div className = {'cell'} onClick={() => {addSign(i, j)}}> {props.field[i][j]} </div>
-        }
-
-    }
-
     return (
         <React.Fragment>
-                {props.field.map((item: Array<string | null>, i: number) =>
+                {field.map((item: Array<string | null>, i: number) =>
                     <div className = 'row' key={i}> {item.map((item, j: number) =>
-                        { if (disabled) {
-                            return  <div className = {'cell'}  > {props.field[i][j]} </div>
-                        } else {
-                            return <div className = {'cell'} onClick={() => {addSign(i, j)}}> {props.field[i][j]} </div>
-                        }}
+                        <div className = {'cell'} onClick={!disabled ? () => addSign(i, j) : undefined}> {field[i][j]} </div>
                     )}
                     </div>)}
-            <span> {props.winner} </span> </React.Fragment>
+            <span> {winner} </span> </React.Fragment>
     );
 };
 
